@@ -146,14 +146,12 @@ ros2 launch rh1 gazebo.launch.py
 
 ### 5.1 为什么 `.pixi` 没有被 Git 跟踪？
 
-仓库里的 `.gitignore` 默认忽略 `.pixi/*`，因为 `.pixi/envs` 是本地环境缓存，不建议提交。
+仓库里的 `.gitignore` 默认忽略 `.pixi/*`，因为 `.pixi/envs` 是本地环境缓存，一般不提交。
 
-推荐提交的文件是：
-
+同平台可复现相同依赖版本需要:
 - `quadruped_sim/pixi.toml`
 - `quadruped_sim/pixi.lock`
 
-这样他人在同平台可复现相同依赖版本。
 
 ### 5.2 MuJoCo 窗口打不开或无图形
 
@@ -174,17 +172,8 @@ pixi run python simulate.py
 cd quadruped_sim
 pixi install
 
-# 构建 ROS 2 包
-source /opt/ros/humble/setup.bash
-colcon build --packages-select rh1 --base-paths rh1
-source install/setup.bash
-
-# 启动 ROS 2 可视化
-ros2 launch rh1 display_robot.launch.py
 ```
 
 ## 7. 贡献建议
 
-1. 不要提交 `.pixi/envs` 等本地缓存目录。
-2. 提交依赖变化时，同时更新 `pixi.toml` 和 `pixi.lock`。
-3. 修改仿真核心逻辑后，建议附上可复现命令与截图/日志片段。
+1. 提交依赖变化时，同时更新 `pixi.toml` 和 `pixi.lock`。
