@@ -1,0 +1,172 @@
+<mujoco model="rh1_quadruped">
+  <compiler meshdir="meshes/visual" angle="radian"/>
+  <option gravity="0 0 -9.81" timestep="0.002"/>
+  <default>
+    <joint damping="0.1"/>
+    <geom contype="1" conaffinity="1" friction="1.0 0.005 0.0001" rgba="0.75 0.75 0.75 1"/>
+  </default>
+
+  <asset>
+    <mesh name="F_base_link" file="base_link.STL"/>
+    <mesh name="R_base_link" file="base_link.STL"/>
+    <mesh name="F_Link1" file="Link1.STL"/>
+    <mesh name="R_Link1" file="Link1.STL"/>
+    <mesh name="F_Link2" file="Link2.STL"/>
+    <mesh name="R_Link2" file="Link2.STL"/>
+    <mesh name="F_Link4" file="Link4.STL"/>
+    <mesh name="R_Link4" file="Link4.STL"/>
+    <mesh name="F_Link5" file="Link5.STL"/>
+    <mesh name="R_Link5" file="Link5.STL"/>
+    <mesh name="F_Link6" file="Link6.STL"/>
+    <mesh name="R_Link6" file="Link6.STL"/>
+    <mesh name="F_Link7" file="Link7.STL"/>
+    <mesh name="R_Link7" file="Link7.STL"/>
+    <mesh name="F_Link8" file="Link8.STL"/>
+    <mesh name="R_Link8" file="Link8.STL"/>
+    <mesh name="F_Link10" file="Link10.STL"/>
+    <mesh name="R_Link10" file="Link10.STL"/>
+    <mesh name="F_Link11" file="Link11.STL"/>
+    <mesh name="R_Link11" file="Link11.STL"/>
+    <mesh name="F_Link12" file="Link12.STL"/>
+    <mesh name="R_Link12" file="Link12.STL"/>
+  </asset>
+
+  <worldbody>
+    <light directional="true" pos="0 0 3" dir="0 0 -1"/>
+    <geom name="ground" type="plane" size="20 20 0.1" rgba="0.3 0.6 0.3 1"/>
+
+    <body name="F_base_link" pos="0 0 0.5">
+      <freejoint name="root"/>
+      <!-- 配重：增加正压力使轮子获得足够摩擦力 -->
+      <body name="chassis_weight" pos="-0.085 0 0">
+        <inertial pos="0 0 0" mass="1.5" fullinertia="0.01 0.01 0.01 0 0 0"/>
+      </body>
+      <inertial pos="0.01962 0.00042858 0.1275" mass="0.10447" fullinertia="0.00014284 0.00010434 0.00021415 -4.8698e-08 6.5351e-07 -2.1296e-08"/>
+      <geom type="mesh" mesh="F_base_link" contype="0" conaffinity="0"/>
+      <body name="F_Link1" pos="0.0094733 -0.089437 0.13366" euler="1.5708 0 0">
+        <joint name="F_joint1" type="hinge" axis="0 0 1" limited="true" range="-3.14 3.14" damping="0.1"/>
+        <inertial pos="-0.018172 7.5943e-07 -0.00024017" mass="0.010538" fullinertia="6.4723e-07 4.7414e-06 5.326e-06 2.2204e-11 -3.9655e-08 -1.4489e-11"/>
+        <geom type="mesh" mesh="F_Link1" contype="0" conaffinity="0"/>
+        <body name="F_Link2" pos="-0.06 0 0.011076" euler="0 0 0">
+          <inertial pos="0.0053781 -0.065346 -0.01087" mass="0.015817" fullinertia="1.6036e-05 1.2182e-06 1.5983e-05 1.2278e-06 -1.264e-08 1.5358e-07"/>
+          <geom type="mesh" mesh="F_Link2" contype="0" conaffinity="0"/>
+          <body name="F_Link4" pos="0.0082023 -0.099663 -0.028996" euler="0 0 0">
+            <joint name="F_joint4" type="hinge" axis="0 0 -1" limited="false" damping="0.001"/>
+            <inertial pos="5.8973e-12 7.5797e-11 0.0027038" mass="0.035175" fullinertia="1.5237e-05 1.5237e-05 2.5786e-05 -3.2644e-10 -1.1281e-14 -3.6697e-14"/>
+            <geom type="mesh" mesh="F_Link4" contype="0" conaffinity="0"/>
+            <geom type="sphere" size="0.034" contype="1" conaffinity="1" rgba="0.1 0.1 0.1 1"/>
+          </body>
+        </body>
+      </body>
+      <body name="F_Link5" pos="0.049473 -0.041906 0.13366" euler="1.5708 0 0">
+        <joint name="F_joint5" type="hinge" axis="0 0 1" limited="true" range="-3.14 3.14" damping="0.1"/>
+        <inertial pos="7.8142e-07 -0.018172 -0.00030928" mass="0.010538" fullinertia="4.7414e-06 6.4723e-07 5.326e-06 3.7331e-13 -1.4896e-11 -3.9651e-08"/>
+        <geom type="mesh" mesh="F_Link5" contype="0" conaffinity="0"/>
+        <body name="F_Link6" pos="0 -0.06 0.0098958" euler="0 0 0">
+          <inertial pos="-0.055906 -0.024155 -0.0031934" mass="0.014489" fullinertia="3.7915e-06 1.5922e-05 1.9476e-05 -6.4435e-06 -4.0459e-07 -1.7481e-07"/>
+          <geom type="mesh" mesh="F_Link6" contype="0" conaffinity="0"/>
+        </body>
+      </body>
+      <body name="F_Link7" pos="0.0094718 0.091801 0.13366" euler="-1.5708 0 0">
+        <joint name="F_joint7" type="hinge" axis="0 0 1" limited="true" range="-3.14 3.14" damping="0.1"/>
+        <inertial pos="-0.018173 3.9048e-07 -0.00012552" mass="0.010538" fullinertia="6.473e-07 4.7414e-06 5.326e-06 -4.2889e-11 -3.9638e-08 -7.4543e-12"/>
+        <geom type="mesh" mesh="F_Link7" contype="0" conaffinity="0"/>
+        <body name="F_Link8" pos="-0.06 0 0.005271" euler="0 0 0">
+          <inertial pos="0.00508369 0.0617689 -0.000965127" mass="0.014324" fullinertia="1.5984e-05 1.16628e-06 1.58968e-05 -1.22785e-06 -1.26402e-08 -1.53583e-07"/>
+          <geom type="mesh" mesh="F_Link8" contype="0" conaffinity="0"/>
+          <body name="F_Link10" pos="0.0082025 0.099663 -0.025257" euler="0 0 0">
+            <joint name="F_joint10" type="hinge" axis="0 0 -1" limited="false" damping="0.001"/>
+            <inertial pos="-7.59746e-11 -2.75868e-12 0.00138457" mass="0.0351747" fullinertia="1.52366e-05 1.52375e-05 2.57858e-05 2.33321e-10 3.77431e-14 -7.0322e-15"/>
+            <geom type="mesh" mesh="F_Link10" contype="0" conaffinity="0"/>
+            <geom type="sphere" size="0.034" contype="1" conaffinity="1" rgba="0.1 0.1 0.1 1"/>
+          </body>
+        </body>
+      </body>
+      <body name="F_Link11" pos="0.049472 0.047239 0.13366" euler="-1.5708 0 0">
+        <joint name="F_joint11" type="hinge" axis="0 0 1" limited="true" range="-3.14 3.14" damping="0.1"/>
+        <inertial pos="-3.90941e-07 0.0181715 -0.00316404" mass="0.0105379" fullinertia="4.74136e-06 6.47301e-07 5.32599e-06 4.28926e-11 7.45038e-12 3.96641e-08"/>
+        <geom type="mesh" mesh="F_Link11" contype="0" conaffinity="0"/>
+        <body name="F_Link12" pos="0 0.06 0.0035028" euler="0 0 0">
+          <inertial pos="-0.0559059 0.0241552 -0.000443282" mass="0.0144894" fullinertia="3.79239e-06 1.59214e-05 1.94758e-05 6.44433e-06 -4.04595e-07 1.74813e-07"/>
+          <geom type="mesh" mesh="F_Link12" contype="0" conaffinity="0"/>
+        </body>
+      </body>
+
+      <body name="R_base_link" pos="-0.17 0 0">
+        <inertial pos="0.01962 0.00042858 0.1275" mass="0.10447" fullinertia="0.00014284 0.00010434 0.00021415 -4.8698e-08 6.5351e-07 -2.1296e-08"/>
+        <geom type="mesh" mesh="R_base_link" contype="0" conaffinity="0"/>
+        <body name="R_Link1" pos="0.0094733 -0.089437 0.13366" euler="1.5708 0 0">
+          <joint name="R_joint1" type="hinge" axis="0 0 1" limited="true" range="-3.14 3.14" damping="0.1"/>
+          <inertial pos="-0.018172 7.5943e-07 -0.00024017" mass="0.010538" fullinertia="6.4723e-07 4.7414e-06 5.326e-06 2.2204e-11 -3.9655e-08 -1.4489e-11"/>
+          <geom type="mesh" mesh="R_Link1" contype="0" conaffinity="0"/>
+          <body name="R_Link2" pos="-0.06 0 0.011076" euler="0 0 0">
+            <inertial pos="0.0053781 -0.065346 -0.01087" mass="0.015817" fullinertia="1.6036e-05 1.2182e-06 1.5983e-05 1.2278e-06 -1.264e-08 1.5358e-07"/>
+            <geom type="mesh" mesh="R_Link2" contype="0" conaffinity="0"/>
+            <body name="R_Link4" pos="0.0082023 -0.099663 -0.028996" euler="0 0 0">
+              <joint name="R_joint4" type="hinge" axis="0 0 -1" limited="false" damping="0.001"/>
+              <inertial pos="5.8973e-12 7.5797e-11 0.0027038" mass="0.035175" fullinertia="1.5237e-05 1.5237e-05 2.5786e-05 -3.2644e-10 -1.1281e-14 -3.6697e-14"/>
+              <geom type="mesh" mesh="R_Link4" contype="0" conaffinity="0"/>
+              <geom type="sphere" size="0.034" contype="1" conaffinity="1" rgba="0.1 0.1 0.1 1"/>
+            </body>
+          </body>
+        </body>
+        <body name="R_Link5" pos="0.049473 -0.041906 0.13366" euler="1.5708 0 0">
+          <joint name="R_joint5" type="hinge" axis="0 0 1" limited="true" range="-3.14 3.14" damping="0.1"/>
+          <inertial pos="7.8142e-07 -0.018172 -0.00030928" mass="0.010538" fullinertia="4.7414e-06 6.4723e-07 5.326e-06 3.7331e-13 -1.4896e-11 -3.9651e-08"/>
+          <geom type="mesh" mesh="R_Link5" contype="0" conaffinity="0"/>
+          <body name="R_Link6" pos="0 -0.06 0.0098958" euler="0 0 0">
+            <inertial pos="-0.055906 -0.024155 -0.0031934" mass="0.014489" fullinertia="3.7915e-06 1.5922e-05 1.9476e-05 -6.4435e-06 -4.0459e-07 -1.7481e-07"/>
+            <geom type="mesh" mesh="R_Link6" contype="0" conaffinity="0"/>
+          </body>
+        </body>
+        <body name="R_Link7" pos="0.0094718 0.091801 0.13366" euler="-1.5708 0 0">
+          <joint name="R_joint7" type="hinge" axis="0 0 1" limited="true" range="-3.14 3.14" damping="0.1"/>
+          <inertial pos="-0.018173 3.9048e-07 -0.00012552" mass="0.010538" fullinertia="6.473e-07 4.7414e-06 5.326e-06 -4.2889e-11 -3.9638e-08 -7.4543e-12"/>
+          <geom type="mesh" mesh="R_Link7" contype="0" conaffinity="0"/>
+          <body name="R_Link8" pos="-0.06 0 0.005271" euler="0 0 0">
+            <inertial pos="0.00508369 0.0617689 -0.000965127" mass="0.014324" fullinertia="1.5984e-05 1.16628e-06 1.58968e-05 -1.22785e-06 -1.26402e-08 -1.53583e-07"/>
+            <geom type="mesh" mesh="R_Link8" contype="0" conaffinity="0"/>
+            <body name="R_Link10" pos="0.0082025 0.099663 -0.025257" euler="0 0 0">
+              <joint name="R_joint10" type="hinge" axis="0 0 -1" limited="false" damping="0.001"/>
+              <inertial pos="-7.59746e-11 -2.75868e-12 0.00138457" mass="0.0351747" fullinertia="1.52366e-05 1.52375e-05 2.57858e-05 2.33321e-10 3.77431e-14 -7.0322e-15"/>
+              <geom type="mesh" mesh="R_Link10" contype="0" conaffinity="0"/>
+              <geom type="sphere" size="0.034" contype="1" conaffinity="1" rgba="0.1 0.1 0.1 1"/>
+            </body>
+          </body>
+        </body>
+        <body name="R_Link11" pos="0.049472 0.047239 0.13366" euler="-1.5708 0 0">
+          <joint name="R_joint11" type="hinge" axis="0 0 1" limited="true" range="-3.14 3.14" damping="0.1"/>
+          <inertial pos="-3.90941e-07 0.0181715 -0.00316404" mass="0.0105379" fullinertia="4.74136e-06 6.47301e-07 5.32599e-06 4.28926e-11 7.45038e-12 3.96641e-08"/>
+          <geom type="mesh" mesh="R_Link11" contype="0" conaffinity="0"/>
+          <body name="R_Link12" pos="0 0.06 0.0035028" euler="0 0 0">
+            <inertial pos="-0.0559059 0.0241552 -0.000443282" mass="0.0144894" fullinertia="3.79239e-06 1.59214e-05 1.94758e-05 6.44433e-06 -4.04595e-07 1.74813e-07"/>
+            <geom type="mesh" mesh="R_Link12" contype="0" conaffinity="0"/>
+          </body>
+        </body>
+      </body>
+
+    </body>
+  </worldbody>
+
+  <!-- 5-bar 平行链等式约束：joint5/joint11 跟随主髋关节同角度转动 -->
+  <equality>
+    <joint joint1="F_joint5"  joint2="F_joint1"  polycoef="0 1 0 0 0"/>
+    <joint joint1="F_joint11" joint2="F_joint7"  polycoef="0 1 0 0 0"/>
+    <joint joint1="R_joint5"  joint2="R_joint1"  polycoef="0 1 0 0 0"/>
+    <joint joint1="R_joint11" joint2="R_joint7"  polycoef="0 1 0 0 0"/>
+  </equality>
+
+  <actuator>
+    <!-- 髋关节位置伺服 (ctrl[0..3])：Q/E 腿高控制 -->
+    <position name="F_hip_L"  joint="F_joint1"  kp="100" ctrlrange="-0.8 0.8"/>
+    <position name="F_hip_R"  joint="F_joint7"  kp="100" ctrlrange="-0.8 0.8"/>
+    <position name="R_hip_L"  joint="R_joint1"  kp="100" ctrlrange="-0.8 0.8"/>
+    <position name="R_hip_R"  joint="R_joint7"  kp="100" ctrlrange="-0.8 0.8"/>
+    <!-- 轮子力矩执行器 (ctrl[4..7])：W/S 前进/后退，A/D 转向 -->
+    <!-- motor 执行器直接施加力矩，不产生速度反馈的爆炸性制动力 -->
+    <motor name="F_wheel_L" joint="F_joint4"  ctrlrange="-0.1 0.1"/>
+    <motor name="F_wheel_R" joint="F_joint10" ctrlrange="-0.1 0.1"/>
+    <motor name="R_wheel_L" joint="R_joint4"  ctrlrange="-0.1 0.1"/>
+    <motor name="R_wheel_R" joint="R_joint10" ctrlrange="-0.1 0.1"/>
+  </actuator>
+</mujoco>
