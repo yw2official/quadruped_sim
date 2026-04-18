@@ -1,2 +1,2 @@
-cd ./quadruped_sim
+cd ./quadruped_sim   
 pixi run python simulate.py
